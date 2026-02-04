@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../src/generated/prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -26,6 +26,20 @@ async function main() {
       { name: 'Fairy' },
     ],
   });
+
+  await prisma.pokemonCard.create({
+      data: {
+          "name":"Bulbizarre",
+          "pokedexId":1,
+          "type": {
+              connect: { name: 'Grass' }
+          },
+          "lifePoints":45,
+          "weight":6.9,
+          "size":0.7,
+          "imageUrl":"https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+      }
+  })
 
   console.log('Seed completed!');
 }

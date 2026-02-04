@@ -929,12 +929,10 @@ export namespace Prisma {
 
   export type TypeCountOutputType = {
     pokemons: number
-    PokemonCard: number
   }
 
   export type TypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pokemons?: boolean | TypeCountOutputTypeCountPokemonsArgs
-    PokemonCard?: boolean | TypeCountOutputTypeCountPokemonCardArgs
   }
 
   // Custom InputTypes
@@ -952,13 +950,6 @@ export namespace Prisma {
    * TypeCountOutputType without action
    */
   export type TypeCountOutputTypeCountPokemonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PokemonCardWhereInput
-  }
-
-  /**
-   * TypeCountOutputType without action
-   */
-  export type TypeCountOutputTypeCountPokemonCardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PokemonCardWhereInput
   }
 
@@ -1142,7 +1133,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     pokemons?: boolean | Type$pokemonsArgs<ExtArgs>
-    PokemonCard?: boolean | Type$PokemonCardArgs<ExtArgs>
     _count?: boolean | TypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["type"]>
 
@@ -1158,7 +1148,6 @@ export namespace Prisma {
 
   export type TypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pokemons?: boolean | Type$pokemonsArgs<ExtArgs>
-    PokemonCard?: boolean | Type$PokemonCardArgs<ExtArgs>
     _count?: boolean | TypeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1167,7 +1156,6 @@ export namespace Prisma {
     name: "Type"
     objects: {
       pokemons: Prisma.$PokemonCardPayload<ExtArgs>[]
-      PokemonCard: Prisma.$PokemonCardPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1537,7 +1525,6 @@ export namespace Prisma {
   export interface Prisma__TypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     pokemons<T extends Type$pokemonsArgs<ExtArgs> = {}>(args?: Subset<T, Type$pokemonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PokemonCardPayload<ExtArgs>, T, "findMany"> | Null>
-    PokemonCard<T extends Type$PokemonCardArgs<ExtArgs> = {}>(args?: Subset<T, Type$PokemonCardArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PokemonCardPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1901,26 +1888,6 @@ export namespace Prisma {
   }
 
   /**
-   * Type.PokemonCard
-   */
-  export type Type$PokemonCardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PokemonCard
-     */
-    select?: PokemonCardSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PokemonCardInclude<ExtArgs> | null
-    where?: PokemonCardWhereInput
-    orderBy?: PokemonCardOrderByWithRelationInput | PokemonCardOrderByWithRelationInput[]
-    cursor?: PokemonCardWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PokemonCardScalarFieldEnum | PokemonCardScalarFieldEnum[]
-  }
-
-  /**
    * Type without action
    */
   export type TypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2178,7 +2145,6 @@ export namespace Prisma {
     weight?: boolean
     imageUrl?: boolean
     type?: boolean | TypeDefaultArgs<ExtArgs>
-    Type?: boolean | TypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pokemonCard"]>
 
   export type PokemonCardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2191,7 +2157,6 @@ export namespace Prisma {
     weight?: boolean
     imageUrl?: boolean
     type?: boolean | TypeDefaultArgs<ExtArgs>
-    Type?: boolean | TypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pokemonCard"]>
 
   export type PokemonCardSelectScalar = {
@@ -2207,18 +2172,15 @@ export namespace Prisma {
 
   export type PokemonCardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     type?: boolean | TypeDefaultArgs<ExtArgs>
-    Type?: boolean | TypeDefaultArgs<ExtArgs>
   }
   export type PokemonCardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     type?: boolean | TypeDefaultArgs<ExtArgs>
-    Type?: boolean | TypeDefaultArgs<ExtArgs>
   }
 
   export type $PokemonCardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PokemonCard"
     objects: {
       type: Prisma.$TypePayload<ExtArgs>
-      Type: Prisma.$TypePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2594,7 +2556,6 @@ export namespace Prisma {
   export interface Prisma__PokemonCardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     type<T extends TypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TypeDefaultArgs<ExtArgs>>): Prisma__TypeClient<$Result.GetResult<Prisma.$TypePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    Type<T extends TypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TypeDefaultArgs<ExtArgs>>): Prisma__TypeClient<$Result.GetResult<Prisma.$TypePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3047,14 +3008,12 @@ export namespace Prisma {
     id?: IntFilter<"Type"> | number
     name?: StringFilter<"Type"> | string
     pokemons?: PokemonCardListRelationFilter
-    PokemonCard?: PokemonCardListRelationFilter
   }
 
   export type TypeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     pokemons?: PokemonCardOrderByRelationAggregateInput
-    PokemonCard?: PokemonCardOrderByRelationAggregateInput
   }
 
   export type TypeWhereUniqueInput = Prisma.AtLeast<{
@@ -3064,7 +3023,6 @@ export namespace Prisma {
     OR?: TypeWhereInput[]
     NOT?: TypeWhereInput | TypeWhereInput[]
     pokemons?: PokemonCardListRelationFilter
-    PokemonCard?: PokemonCardListRelationFilter
   }, "id" | "name">
 
   export type TypeOrderByWithAggregationInput = {
@@ -3098,7 +3056,6 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"PokemonCard"> | number | null
     imageUrl?: StringNullableFilter<"PokemonCard"> | string | null
     type?: XOR<TypeScalarRelationFilter, TypeWhereInput>
-    Type?: XOR<TypeScalarRelationFilter, TypeWhereInput>
   }
 
   export type PokemonCardOrderByWithRelationInput = {
@@ -3111,7 +3068,6 @@ export namespace Prisma {
     weight?: SortOrderInput | SortOrder
     imageUrl?: SortOrderInput | SortOrder
     type?: TypeOrderByWithRelationInput
-    Type?: TypeOrderByWithRelationInput
   }
 
   export type PokemonCardWhereUniqueInput = Prisma.AtLeast<{
@@ -3127,7 +3083,6 @@ export namespace Prisma {
     weight?: FloatNullableFilter<"PokemonCard"> | number | null
     imageUrl?: StringNullableFilter<"PokemonCard"> | string | null
     type?: XOR<TypeScalarRelationFilter, TypeWhereInput>
-    Type?: XOR<TypeScalarRelationFilter, TypeWhereInput>
   }, "id" | "name" | "pokedexId">
 
   export type PokemonCardOrderByWithAggregationInput = {
@@ -3163,27 +3118,23 @@ export namespace Prisma {
   export type TypeCreateInput = {
     name: string
     pokemons?: PokemonCardCreateNestedManyWithoutTypeInput
-    PokemonCard?: PokemonCardCreateNestedManyWithoutTypeInput
   }
 
   export type TypeUncheckedCreateInput = {
     id?: number
     name: string
     pokemons?: PokemonCardUncheckedCreateNestedManyWithoutTypeInput
-    PokemonCard?: PokemonCardUncheckedCreateNestedManyWithoutTypeInput
   }
 
   export type TypeUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     pokemons?: PokemonCardUpdateManyWithoutTypeNestedInput
-    PokemonCard?: PokemonCardUpdateManyWithoutTypeNestedInput
   }
 
   export type TypeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     pokemons?: PokemonCardUncheckedUpdateManyWithoutTypeNestedInput
-    PokemonCard?: PokemonCardUncheckedUpdateManyWithoutTypeNestedInput
   }
 
   export type TypeCreateManyInput = {
@@ -3208,7 +3159,6 @@ export namespace Prisma {
     weight?: number | null
     imageUrl?: string | null
     type: TypeCreateNestedOneWithoutPokemonsInput
-    Type: TypeCreateNestedOneWithoutPokemonCardInput
   }
 
   export type PokemonCardUncheckedCreateInput = {
@@ -3230,7 +3180,6 @@ export namespace Prisma {
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     type?: TypeUpdateOneRequiredWithoutPokemonsNestedInput
-    Type?: TypeUpdateOneRequiredWithoutPokemonCardNestedInput
   }
 
   export type PokemonCardUncheckedUpdateInput = {
@@ -3492,20 +3441,6 @@ export namespace Prisma {
     connect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
   }
 
-  export type PokemonCardCreateNestedManyWithoutTypeInput = {
-    create?: XOR<PokemonCardCreateWithoutTypeInput, PokemonCardUncheckedCreateWithoutTypeInput> | PokemonCardCreateWithoutTypeInput[] | PokemonCardUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: PokemonCardCreateOrConnectWithoutTypeInput | PokemonCardCreateOrConnectWithoutTypeInput[]
-    createMany?: PokemonCardCreateManyTypeInputEnvelope
-    connect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-  }
-
-  export type PokemonCardUncheckedCreateNestedManyWithoutTypeInput = {
-    create?: XOR<PokemonCardCreateWithoutTypeInput, PokemonCardUncheckedCreateWithoutTypeInput> | PokemonCardCreateWithoutTypeInput[] | PokemonCardUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: PokemonCardCreateOrConnectWithoutTypeInput | PokemonCardCreateOrConnectWithoutTypeInput[]
-    createMany?: PokemonCardCreateManyTypeInputEnvelope
-    connect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-  }
-
   export type PokemonCardUncheckedCreateNestedManyWithoutTypeInput = {
     create?: XOR<PokemonCardCreateWithoutTypeInput, PokemonCardUncheckedCreateWithoutTypeInput> | PokemonCardCreateWithoutTypeInput[] | PokemonCardUncheckedCreateWithoutTypeInput[]
     connectOrCreate?: PokemonCardCreateOrConnectWithoutTypeInput | PokemonCardCreateOrConnectWithoutTypeInput[]
@@ -3515,20 +3450,6 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type PokemonCardUpdateManyWithoutTypeNestedInput = {
-    create?: XOR<PokemonCardCreateWithoutTypeInput, PokemonCardUncheckedCreateWithoutTypeInput> | PokemonCardCreateWithoutTypeInput[] | PokemonCardUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: PokemonCardCreateOrConnectWithoutTypeInput | PokemonCardCreateOrConnectWithoutTypeInput[]
-    upsert?: PokemonCardUpsertWithWhereUniqueWithoutTypeInput | PokemonCardUpsertWithWhereUniqueWithoutTypeInput[]
-    createMany?: PokemonCardCreateManyTypeInputEnvelope
-    set?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    disconnect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    delete?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    connect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    update?: PokemonCardUpdateWithWhereUniqueWithoutTypeInput | PokemonCardUpdateWithWhereUniqueWithoutTypeInput[]
-    updateMany?: PokemonCardUpdateManyWithWhereWithoutTypeInput | PokemonCardUpdateManyWithWhereWithoutTypeInput[]
-    deleteMany?: PokemonCardScalarWhereInput | PokemonCardScalarWhereInput[]
   }
 
   export type PokemonCardUpdateManyWithoutTypeNestedInput = {
@@ -3567,29 +3488,9 @@ export namespace Prisma {
     deleteMany?: PokemonCardScalarWhereInput | PokemonCardScalarWhereInput[]
   }
 
-  export type PokemonCardUncheckedUpdateManyWithoutTypeNestedInput = {
-    create?: XOR<PokemonCardCreateWithoutTypeInput, PokemonCardUncheckedCreateWithoutTypeInput> | PokemonCardCreateWithoutTypeInput[] | PokemonCardUncheckedCreateWithoutTypeInput[]
-    connectOrCreate?: PokemonCardCreateOrConnectWithoutTypeInput | PokemonCardCreateOrConnectWithoutTypeInput[]
-    upsert?: PokemonCardUpsertWithWhereUniqueWithoutTypeInput | PokemonCardUpsertWithWhereUniqueWithoutTypeInput[]
-    createMany?: PokemonCardCreateManyTypeInputEnvelope
-    set?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    disconnect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    delete?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    connect?: PokemonCardWhereUniqueInput | PokemonCardWhereUniqueInput[]
-    update?: PokemonCardUpdateWithWhereUniqueWithoutTypeInput | PokemonCardUpdateWithWhereUniqueWithoutTypeInput[]
-    updateMany?: PokemonCardUpdateManyWithWhereWithoutTypeInput | PokemonCardUpdateManyWithWhereWithoutTypeInput[]
-    deleteMany?: PokemonCardScalarWhereInput | PokemonCardScalarWhereInput[]
-  }
-
   export type TypeCreateNestedOneWithoutPokemonsInput = {
     create?: XOR<TypeCreateWithoutPokemonsInput, TypeUncheckedCreateWithoutPokemonsInput>
     connectOrCreate?: TypeCreateOrConnectWithoutPokemonsInput
-    connect?: TypeWhereUniqueInput
-  }
-
-  export type TypeCreateNestedOneWithoutPokemonCardInput = {
-    create?: XOR<TypeCreateWithoutPokemonCardInput, TypeUncheckedCreateWithoutPokemonCardInput>
-    connectOrCreate?: TypeCreateOrConnectWithoutPokemonCardInput
     connect?: TypeWhereUniqueInput
   }
 
@@ -3611,14 +3512,6 @@ export namespace Prisma {
     upsert?: TypeUpsertWithoutPokemonsInput
     connect?: TypeWhereUniqueInput
     update?: XOR<XOR<TypeUpdateToOneWithWhereWithoutPokemonsInput, TypeUpdateWithoutPokemonsInput>, TypeUncheckedUpdateWithoutPokemonsInput>
-  }
-
-  export type TypeUpdateOneRequiredWithoutPokemonCardNestedInput = {
-    create?: XOR<TypeCreateWithoutPokemonCardInput, TypeUncheckedCreateWithoutPokemonCardInput>
-    connectOrCreate?: TypeCreateOrConnectWithoutPokemonCardInput
-    upsert?: TypeUpsertWithoutPokemonCardInput
-    connect?: TypeWhereUniqueInput
-    update?: XOR<XOR<TypeUpdateToOneWithWhereWithoutPokemonCardInput, TypeUpdateWithoutPokemonCardInput>, TypeUncheckedUpdateWithoutPokemonCardInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3766,7 +3659,6 @@ export namespace Prisma {
     size?: number | null
     weight?: number | null
     imageUrl?: string | null
-    Type: TypeCreateNestedOneWithoutPokemonCardInput
   }
 
   export type PokemonCardUncheckedCreateWithoutTypeInput = {
@@ -3786,26 +3678,6 @@ export namespace Prisma {
 
   export type PokemonCardCreateManyTypeInputEnvelope = {
     data: PokemonCardCreateManyTypeInput | PokemonCardCreateManyTypeInput[]
-  }
-
-  export type PokemonCardCreateWithoutTypeInput = {
-    name: string
-    pokedexId: number
-    lifePoints: number
-    size?: number | null
-    weight?: number | null
-    imageUrl?: string | null
-    type: TypeCreateNestedOneWithoutPokemonsInput
-  }
-
-  export type PokemonCardUncheckedCreateWithoutTypeInput = {
-    id?: number
-    name: string
-    pokedexId: number
-    lifePoints: number
-    size?: number | null
-    weight?: number | null
-    imageUrl?: string | null
   }
 
   export type PokemonCardUpsertWithWhereUniqueWithoutTypeInput = {
@@ -3838,52 +3710,18 @@ export namespace Prisma {
     imageUrl?: StringNullableFilter<"PokemonCard"> | string | null
   }
 
-  export type PokemonCardUpsertWithWhereUniqueWithoutTypeInput = {
-    where: PokemonCardWhereUniqueInput
-    update: XOR<PokemonCardUpdateWithoutTypeInput, PokemonCardUncheckedUpdateWithoutTypeInput>
-    create: XOR<PokemonCardCreateWithoutTypeInput, PokemonCardUncheckedCreateWithoutTypeInput>
-  }
-
-  export type PokemonCardUpdateWithWhereUniqueWithoutTypeInput = {
-    where: PokemonCardWhereUniqueInput
-    data: XOR<PokemonCardUpdateWithoutTypeInput, PokemonCardUncheckedUpdateWithoutTypeInput>
-  }
-
-  export type PokemonCardUpdateManyWithWhereWithoutTypeInput = {
-    where: PokemonCardScalarWhereInput
-    data: XOR<PokemonCardUpdateManyMutationInput, PokemonCardUncheckedUpdateManyWithoutTypeInput>
-  }
-
   export type TypeCreateWithoutPokemonsInput = {
     name: string
-    PokemonCard?: PokemonCardCreateNestedManyWithoutTypeInput
   }
 
   export type TypeUncheckedCreateWithoutPokemonsInput = {
     id?: number
     name: string
-    PokemonCard?: PokemonCardUncheckedCreateNestedManyWithoutTypeInput
   }
 
   export type TypeCreateOrConnectWithoutPokemonsInput = {
     where: TypeWhereUniqueInput
     create: XOR<TypeCreateWithoutPokemonsInput, TypeUncheckedCreateWithoutPokemonsInput>
-  }
-
-  export type TypeCreateWithoutPokemonCardInput = {
-    name: string
-    pokemons?: PokemonCardCreateNestedManyWithoutTypeInput
-  }
-
-  export type TypeUncheckedCreateWithoutPokemonCardInput = {
-    id?: number
-    name: string
-    pokemons?: PokemonCardUncheckedCreateNestedManyWithoutTypeInput
-  }
-
-  export type TypeCreateOrConnectWithoutPokemonCardInput = {
-    where: TypeWhereUniqueInput
-    create: XOR<TypeCreateWithoutPokemonCardInput, TypeUncheckedCreateWithoutPokemonCardInput>
   }
 
   export type TypeUpsertWithoutPokemonsInput = {
@@ -3899,35 +3737,11 @@ export namespace Prisma {
 
   export type TypeUpdateWithoutPokemonsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    PokemonCard?: PokemonCardUpdateManyWithoutTypeNestedInput
   }
 
   export type TypeUncheckedUpdateWithoutPokemonsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    PokemonCard?: PokemonCardUncheckedUpdateManyWithoutTypeNestedInput
-  }
-
-  export type TypeUpsertWithoutPokemonCardInput = {
-    update: XOR<TypeUpdateWithoutPokemonCardInput, TypeUncheckedUpdateWithoutPokemonCardInput>
-    create: XOR<TypeCreateWithoutPokemonCardInput, TypeUncheckedCreateWithoutPokemonCardInput>
-    where?: TypeWhereInput
-  }
-
-  export type TypeUpdateToOneWithWhereWithoutPokemonCardInput = {
-    where?: TypeWhereInput
-    data: XOR<TypeUpdateWithoutPokemonCardInput, TypeUncheckedUpdateWithoutPokemonCardInput>
-  }
-
-  export type TypeUpdateWithoutPokemonCardInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    pokemons?: PokemonCardUpdateManyWithoutTypeNestedInput
-  }
-
-  export type TypeUncheckedUpdateWithoutPokemonCardInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    pokemons?: PokemonCardUncheckedUpdateManyWithoutTypeNestedInput
   }
 
   export type PokemonCardCreateManyTypeInput = {
@@ -3947,37 +3761,6 @@ export namespace Prisma {
     size?: NullableFloatFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    Type?: TypeUpdateOneRequiredWithoutPokemonCardNestedInput
-  }
-
-  export type PokemonCardUncheckedUpdateWithoutTypeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    pokedexId?: IntFieldUpdateOperationsInput | number
-    lifePoints?: IntFieldUpdateOperationsInput | number
-    size?: NullableFloatFieldUpdateOperationsInput | number | null
-    weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type PokemonCardUncheckedUpdateManyWithoutTypeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    pokedexId?: IntFieldUpdateOperationsInput | number
-    lifePoints?: IntFieldUpdateOperationsInput | number
-    size?: NullableFloatFieldUpdateOperationsInput | number | null
-    weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type PokemonCardUpdateWithoutTypeInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    pokedexId?: IntFieldUpdateOperationsInput | number
-    lifePoints?: IntFieldUpdateOperationsInput | number
-    size?: NullableFloatFieldUpdateOperationsInput | number | null
-    weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: TypeUpdateOneRequiredWithoutPokemonsNestedInput
   }
 
   export type PokemonCardUncheckedUpdateWithoutTypeInput = {
