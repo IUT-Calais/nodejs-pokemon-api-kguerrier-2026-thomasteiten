@@ -130,6 +130,12 @@ exports.Prisma.PokemonCardScalarFieldEnum = {
   imageUrl: 'imageUrl'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -143,7 +149,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Type: 'Type',
-  PokemonCard: 'PokemonCard'
+  PokemonCard: 'PokemonCard',
+  User: 'User'
 };
 
 /**
