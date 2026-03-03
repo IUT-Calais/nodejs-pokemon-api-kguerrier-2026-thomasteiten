@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { app } from '../src';
-import { prismaMock } from './jest.setup';
+import { prismaMock } from './vitest.setup';
+import {response} from "express";
 
 describe('PokemonCard API', () => {
   describe('GET /pokemon-cards', () => {

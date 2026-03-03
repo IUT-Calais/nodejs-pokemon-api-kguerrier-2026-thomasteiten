@@ -134,7 +134,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/thomas/Library/Mobile Documents/com~apple~CloudDocs/Desktop/BUT_INFO/TP_Pokemon/nodejs-pokemon-api-kguerrier-2026-thomasteiten/src/generated/prisma/client",
+      "value": "/Users/thomas/Library/Mobile Documents/com~apple~CloudDocs/Desktop/TP_Pokemon/nodejs-pokemon-api-kguerrier-2026-thomasteiten/src/generated/prisma/client",
       "fromEnvVar": null
     },
     "config": {
@@ -148,7 +148,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/thomas/Library/Mobile Documents/com~apple~CloudDocs/Desktop/BUT_INFO/TP_Pokemon/nodejs-pokemon-api-kguerrier-2026-thomasteiten/prisma/schema.prisma",
+    "sourceFilePath": "/Users/thomas/Library/Mobile Documents/com~apple~CloudDocs/Desktop/TP_Pokemon/nodejs-pokemon-api-kguerrier-2026-thomasteiten/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -162,6 +162,7 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
