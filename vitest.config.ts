@@ -12,7 +12,7 @@ export default defineConfig({
         environment: 'node',
         setupFiles: ['./tests/vitest.setup.ts'],
         coverage: {
-            provider: 'istanbul',
+            provider: 'v8',
             reporter: ['text', 'json', 'html'],
             exclude: [
                 'node_modules/',

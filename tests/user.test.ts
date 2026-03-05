@@ -4,13 +4,8 @@ import { prismaMock } from './vitest.setup.js';
 import bcrypt from "bcrypt";
 import { vi } from 'vitest';
 
-import {response} from "express";
-import prisma from "../src/client";
-import {vitest} from "vitest";
-import * as v8 from "node:v8";
-
 describe('User API', () => {
-  describe('POST /users', () => {
+  describe('POST /users/create', () => {
     it('créer un nouvel utilisateur', async () => {
       const createdUser = {};
 
@@ -26,7 +21,7 @@ describe('User API', () => {
     });
   });
 
-  describe('POST /login', () => {
+  describe('POST /auth/login', () => {
     it('l\'utilisateur peut se connecter et reçoit un token', async () => {
         prismaMock.user.findUnique.mockResolvedValue({
             id: 1,
@@ -78,6 +73,23 @@ describe('User API', () => {
             const response = await request(app).get('/users');
             expect(response.status).toBe(200);
             expect(response.body).toEqual(mockedUsersArray);
+        });
+    });
+
+    describe('GET /user/:id', () => {
+        it('retourne un utilisateur en particulier', async () => {
+            prismaMock.user.findUnique.mockResolvedValue({
+                id: 1,
+                email: 'test@gmail.com',
+                password: 'test1',
+            });
+
+            const response = await request(app).get('/users/:id')
+            expect(response.body).toEqual({
+                id: 1,
+                email: 'test@gmail.com',
+                password: 'test1',
+            });
         });
     });
 });
