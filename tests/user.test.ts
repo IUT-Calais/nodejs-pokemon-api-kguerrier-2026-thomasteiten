@@ -1,20 +1,25 @@
 import request from 'supertest';
 import { app } from '../src';
-import { prismaMock } from './vitest.setup';
+import { prismaMock } from './vitest.setup.js';
+import bcrypt from "bcrypt";
+import { vi } from 'vitest';
+
 import {response} from "express";
 import prisma from "../src/client";
+import {vitest} from "vitest";
+import * as v8 from "node:v8";
 
 describe('User API', () => {
   describe('POST /users', () => {
-    it('should create a new user', async () => {
+    it('créer un nouvel utilisateur', async () => {
       const createdUser = {};
 
       prismaMock.user.create.mockResolvedValue(createdUser as any)
 
-        const response = await request(app).post('/users').send({
-            email : 'test@test.com',
-            password : 'test123',
-        })
+        const response = await request(app).post('/users/create').send({
+            "email": "test@test.com",
+            "password": "test123",
+        });
 
       expect(response.status).toBe(201);
       expect(response.body).toEqual(createdUser);
@@ -22,20 +27,57 @@ describe('User API', () => {
   });
 
   describe('POST /login', () => {
-    it('should login a user and return a token', async () => {
-      const user = {};
-      const token = 'mockedToken';
-
-        const response = await request(app).post('/login').send({
+    it('l\'utilisateur peut se connecter et reçoit un token', async () => {
+        prismaMock.user.findUnique.mockResolvedValue({
+            id: 1,
             email: 'test@test.com',
-            password: 'testvraimdp',
+            password: 'hashedPassword',
         });
 
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual({
-        token,
-        message: 'Connexion réussie',
-      });
+        vi.mocked(bcrypt.compare).mockResolvedValue(true as never);
+
+        const response = await request(app).post('/auth/login').send({
+            "email": "test@test.com",
+            "password": "test123",
+        });
+
+        expect(response.status).toBe(200);
+        expect(response.body.message).toBe("Connexion réussie!");
+        expect(response.body.token).toBeDefined();
+        expect(response.body.user).toEqual({
+            id: 1,
+            email: "test@test.com",
+        })
     });
+
+      it('l\'utilisateur reçoit une erreur si ses identifiants sont incorrects', async () => {
+          prismaMock.user.findUnique.mockResolvedValue(null);
+
+          vi.mocked(bcrypt.compare).mockResolvedValue(true as never);
+
+          const response = await request(app).post('/auth/login').send({
+              "email": "test2@test.com",
+              "password": "test123",
+          });
+
+          expect(response.status).toBe(401);
+          expect(response.body.error).toBe("Email ou mot de passe incorrect");
+      });
   });
+
+    describe('GET /users', () => {
+        it('retourne la liste des utilisateurs', async () => {
+
+            const mockedUsersArray = [
+                { id: 1, email: 'test@gmail.com', password: 'test1' },
+                { id: 2, email: 'test2@gmail.com', password: 'test2' },
+            ];
+
+            prismaMock.user.findMany.mockResolvedValue(mockedUsersArray);
+
+            const response = await request(app).get('/users');
+            expect(response.status).toBe(200);
+            expect(response.body).toEqual(mockedUsersArray);
+        });
+    });
 });

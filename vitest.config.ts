@@ -10,8 +10,9 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'node',
+        setupFiles: ['./tests/vitest.setup.ts'],
         coverage: {
-            provider: 'v8',
+            provider: 'istanbul',
             reporter: ['text', 'json', 'html'],
             exclude: [
                 'node_modules/',

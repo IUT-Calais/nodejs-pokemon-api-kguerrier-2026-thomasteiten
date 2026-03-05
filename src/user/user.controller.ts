@@ -1,6 +1,12 @@
 import type {Request, Response} from 'express';
 import prisma from "../client";
 
+export const getUsers = async (req: Request, res: Response) => {
+    const user = await prisma.user.findMany();
+
+    res.status(200).send(user);
+}
+
 export const getUser = async (req: Request, res: Response) => {
     const idUser = Number(req.params.id);
     const user = await prisma.user.findUnique({
