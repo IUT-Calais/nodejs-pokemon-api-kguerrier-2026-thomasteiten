@@ -15,7 +15,11 @@ export const getPokemonCard = async (req: Request, res: Response) => {
         }
     });
 
-    res.status(200).send(pokemonsCard);
+    if (!pokemonsCard) {
+        return res.status(404).json({error: 'PokemonCard non trouvée!'})
+    }
+
+    res.status(200).json(pokemonsCard);
 }
 
 export const createPokemonCard = async (req: Request, res: Response) => {

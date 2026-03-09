@@ -4,6 +4,7 @@ import { beforeEach, vi } from 'vitest'
 // Import du client mocké
 import prisma from '../src/client.js'
 import type { PrismaClient } from "../src/generated/prisma/client";
+import {stopServer} from "../src";
 // Mock du module Prisma
 vi.mock('../src/client', () => ({
     default: mockDeep<PrismaClient>(),
@@ -16,7 +17,6 @@ vi.mock('../src/common/jwt.middleware', () => ({
         next()
     }),
 }))
-
 // Mock du mot de passe hashé
 vi.mock('bcrypt', () => ({
     default: {
@@ -30,5 +30,10 @@ process.env.JWT_SECRET = 'test_secret';
 beforeEach(() => {
     mockReset(prismaMock)
 })
+
+afterAll(() => {
+    stopServer();
+});
+
 // Export du mock typé
 export const prismaMock = prisma as unknown as DeepMockProxy<PrismaClient>

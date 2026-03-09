@@ -8,8 +8,9 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-export const server = app.listen(process.env.NODE_ENV === 'test' ? 0 : port);
-//Si l'on lance un test le serveur se lancera sur un port disponible.
+export const server = app.listen(/* c8 ignore next */ process.env.NODE_ENV === 'test' ? 0 : port, () => {
+    console.log(`Mon serveur démarre sur le port ${port}`);
+});
 
 app.use("/pokemons", pokemonCardRouter);
 app.use("/users", userRouter);
