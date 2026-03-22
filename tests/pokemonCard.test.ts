@@ -1,8 +1,6 @@
 import {prismaMock} from "./vitest.setup";
-import {vi} from "vitest";
 import request from "supertest";
 import {app} from "../src";
-import {response} from "express";
 
 describe('PokemonCard API', () => {
   describe('GET /pokemons', () => {
